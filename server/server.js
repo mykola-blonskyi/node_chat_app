@@ -17,8 +17,26 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
+
+  socket.emit('newEmail', {
+    from: 'test@test.test',
+    text: 'how r u',
+    created_at: 123456
+  });
+
+  socket.emit('newMessage', {
+    from: 'zxc',
+    text: 'fdfsdfsd',
+    created_at: new Date().getTime()
+  });
+
+  socket.on('createEmail', (email) => {
+    console.log('create email: ', email);
+  });
+
+  socket.on('createMessage', (msg) => {
+    console.log('new message: ', msg);
+  });
 });
-
-
 
 server.listen(port, () => console.log(`Server started on ${port} port.`));
