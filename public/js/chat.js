@@ -73,7 +73,6 @@ jQuery(document).ready(function () {
 
     if(msgTextBox.val() !== ''){
       socket.emit('createMessage', {
-        from: 'User',
         text: msgTextBox.val()
       }, function () {
         msgTextBox.val('');
